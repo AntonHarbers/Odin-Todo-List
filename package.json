@@ -1,0 +1,25 @@
+{
+  "name": "odin-todo-list",
+  "version": "1.0.0",
+  "description": "A todo list made for the odin project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "githost": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages"
+  },
+  "keywords": [
+    "odin",
+    "todo",
+    "list"
+  ],
+  "author": "Anton Harbers",
+  "license": "ISC",
+  "homepage": "https://github.com/AntonHarbers/Odin-Todo-List.git",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
