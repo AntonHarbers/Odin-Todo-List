@@ -8,10 +8,24 @@ class Dom {
         this.projectForm = document.getElementById("project-form");
         this.todoForm = document.getElementById("todo-form");
         this.todoProjects = document.getElementById("todo-projects");
+        this.projectNameInput = document.getElementById("project-name-input");
     }
 
-    renderTodos() {
-        console.log("rendering todos");
+    renderTodos(projects) {
+        this.renderProjects(projects);
+    }
+
+    renderProjects(projects){
+        console.log("rendering projects");
+        this.projectContainer.innerHTML = "";
+        projects.forEach((project) => {
+            const projectDiv = document.createElement("div");
+            projectDiv.classList.add("project");
+            projectDiv.innerHTML = `
+                <h3>${project.name}</h3>
+            `;
+            this.projectContainer.appendChild(projectDiv);
+        });
     }
 
     toggleProjectModal() {
@@ -27,6 +41,8 @@ class Dom {
     }
 
     addProjectsToSelect(projects) {
+        // clear all options
+        this.todoProjects.innerHTML = "";
         projects.forEach((project) => {
             const option = document.createElement("option");
             option.value = project.name;

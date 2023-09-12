@@ -1,0 +1,21 @@
+.modal{
+    position: absolute;
+    top: calc(50% - 25%);
+    left: calc(50% - 25%);
+    width: 50%;
+    height: 50%;
+    /* background-color: rgba(0,0,0,0.5); */
+    background-color: #c8c8c8;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
