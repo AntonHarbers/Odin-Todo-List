@@ -5,8 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Todo-List</title>
     <script defer src="main.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="content"></div>
+    <div id="content">
+        <div id="projects">
+            // contains project cards which contain todo cards
+        </div>
+        <div id="btn-container">
+            <button id="add-project-btn">Add Project</button>
+            <button id="add-todo-btn">Add Todo</button>
+        </div>
+        <div id="modals">
+            <div id="project-modal" class="hidden modal">
+                <form id="project-form" action="submit">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" name="project-name" id="project-name">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div id="todo-modal" class="hidden modal" >
+                <form id="todo-form" action="submit">
+                    <label for="todo-name">Name</label>
+                    <input type="text" name="todo-name" id="todo-name">
+                    <label for="todo-desc">Description</label>
+                    <input type="text" name="todo-desc" id="todo-desc">
+                    <label for="todo-date">Due Date</label>
+                    <input type="date" name="todo-date" id="todo-date">
+                    <label for="todo-priority">Priority</label>
+                    <select name="todo-priority" id="todo-priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                    <label for="todo-project">Project</label>
+                    <select name="todo-project" id="todo-projects">
+                    </select>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
