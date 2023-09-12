@@ -16,7 +16,7 @@
   \********************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: 'Roboto', sans-serif;\r\n}\r\n\r\nbody{\r\n    background-color: #c8c8c8;\r\n}`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://odin-todo-list/./src/styles/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: 'Roboto', sans-serif;\r\n}\r\n\r\nbody{\r\n    background-color: #c8c8c8;\r\n}\r\n\r\n.modal{\r\n    position: absolute;\r\n    top: calc(50% - 25%);\r\n    left: calc(50% - 25%);\r\n    width: 50%;\r\n    height: 50%;\r\n    /* background-color: rgba(0,0,0,0.5); */\r\n    background-color: #c8c8c8;\r\n    z-index: 1000;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.hidden{\r\n    display: none;\r\n}\r\n\r\nform{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    gap: 1rem;\r\n}`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://odin-todo-list/./src/styles/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -110,13 +110,43 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/components/dom.js":
+/*!*******************************!*\
+  !*** ./src/components/dom.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass Dom {\r\n    constructor() {\r\n        this.projectContainer = document.getElementById(\"projects\");\r\n        this.addProjectBtn = document.getElementById(\"add-project-btn\");\r\n        this.addTodoBtn = document.getElementById(\"add-todo-btn\");\r\n        this.projectModal = document.getElementById(\"project-modal\");\r\n        this.todoModal = document.getElementById(\"todo-modal\");\r\n        this.projectForm = document.getElementById(\"project-form\");\r\n        this.todoForm = document.getElementById(\"todo-form\");\r\n        this.todoProjects = document.getElementById(\"todo-projects\");\r\n    }\r\n\r\n    renderTodos() {\r\n        console.log(\"rendering todos\");\r\n    }\r\n\r\n    toggleProjectModal() {\r\n        this.projectModal.classList.toggle(\"hidden\");\r\n        this.projectForm.reset();\r\n        this.todoModal.classList.add(\"hidden\");\r\n    }\r\n\r\n    toggleTodoModal() {\r\n        this.todoModal.classList.toggle(\"hidden\");\r\n        this.todoForm.reset();\r\n        this.projectModal.classList.add(\"hidden\");\r\n    }\r\n\r\n    addProjectsToSelect(projects) {\r\n        projects.forEach((project) => {\r\n            const option = document.createElement(\"option\");\r\n            option.value = project.name;\r\n            option.innerText = project.name;\r\n            this.todoProjects.appendChild(option);\r\n        });\r\n    }        \r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dom);\r\n\n\n//# sourceURL=webpack://odin-todo-list/./src/components/dom.js?");
+
+/***/ }),
+
+/***/ "./src/components/project.js":
+/*!***********************************!*\
+  !*** ./src/components/project.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass Project{\r\n    constructor(name, todos) {\r\n        this.name = name;\r\n        this.todos = todos;\r\n    }\r\n\r\n    addTodo() {\r\n        this.todos.push(new Todo);\r\n    }\r\n\r\n    removeTodo(index) {\r\n        this.todos.splice(index, 1);\r\n    }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Project);\n\n//# sourceURL=webpack://odin-todo-list/./src/components/project.js?");
+
+/***/ }),
+
+/***/ "./src/components/todo.js":
+/*!********************************!*\
+  !*** ./src/components/todo.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass Todo {\r\n    constructor(title, description, dueDate, priority, notes) {\r\n      this.title = title;\r\n      this.description = description;\r\n      this.dueDate = dueDate;\r\n      this.priority = priority;\r\n      this.notes = notes;\r\n    }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Todo);\n\n//# sourceURL=webpack://odin-todo-list/./src/components/todo.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.css */ \"./src/styles/style.css\");\n\r\n\r\nconsole.log(\"Hello World!\");\n\n//# sourceURL=webpack://odin-todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.css */ \"./src/styles/style.css\");\n/* harmony import */ var _components_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/dom */ \"./src/components/dom.js\");\n/* harmony import */ var _components_project__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/project */ \"./src/components/project.js\");\n/* harmony import */ var _components_todo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/todo */ \"./src/components/todo.js\");\n\r\n\r\n\r\n\r\n\r\nconst project = new _components_project__WEBPACK_IMPORTED_MODULE_2__[\"default\"](\"Default\", []);\r\nconst project1 = new _components_project__WEBPACK_IMPORTED_MODULE_2__[\"default\"](\"Project 1\", []);\r\n\r\nconst dom = new _components_dom__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\r\ndom.renderTodos();\r\n\r\ndom.addProjectBtn.addEventListener(\"click\", () => {\r\n    dom.toggleProjectModal();\r\n});\r\n\r\ndom.addTodoBtn.addEventListener(\"click\", () => {\r\n    dom.toggleTodoModal();\r\n});\r\n\r\ndom.projectForm.addEventListener(\"submit\", (e) => {\r\n    e.preventDefault();\r\n    dom.toggleProjectModal();\r\n});\r\n\r\ndom.todoForm.addEventListener(\"submit\", (e) => {\r\n    e.preventDefault();\r\n    dom.toggleTodoModal();\r\n});\r\n\r\ndom.addProjectsToSelect([project, project1]);\n\n//# sourceURL=webpack://odin-todo-list/./src/index.js?");
 
 /***/ })
 
