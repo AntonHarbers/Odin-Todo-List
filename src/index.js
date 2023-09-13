@@ -1,6 +1,7 @@
 import './styles/buttons.css';
 import './styles/modals.css';
 import './styles/style.css';
+import './styles/project-cards.css';
 
 import Dom from './components/dom';
 import Project from './components/project';
@@ -93,9 +94,3 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// when clicking anywhere outside of modals, close modals
-window.addEventListener('click', (e) => {
-  if (e.target !== dom.projectModal && e.target !== dom.todoModal && e.target !== dom.addProjectBtn && e.target !== dom.addTodoBtn) {
-    dom.closeModals();
-  }
-});
