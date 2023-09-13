@@ -1,21 +1,137 @@
-.modal{
-    position: absolute;
-    top: calc(50% - 25%);
-    left: calc(50% - 25%);
-    width: 50%;
-    height: 50%;
-    /* background-color: rgba(0,0,0,0.5); */
-    background-color: #c8c8c8;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modal {
+  position: absolute;
+  top: calc(40% - 25%);
+  left: calc(50% - 25%);
+  width: 50%;
+  height: auto;
+  padding: 2rem 0;
+  background-color: #e7e7e7;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid white;
+  border-radius: 0.5rem;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
+
+.form-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+input {
+  width: 60%;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid blue;
+}
+
+input[type='date'] {
+  width: 250px;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+select {
+  width: 250px;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#todo-priority{
+    background-color: #4CAF50;
+
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border: 1px solid blue;
+}
+
+input[type='submit'] {
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: #3e8e41;
+}
+
+input[type='submit']:focus {
+  outline: none;
+  background-color: #3e8e41;
+}
+
+input[type='submit']:active {
+  background-color: #27dd2d;
+}
+
+.error {
+  font-weight: bold;
+  border: 1px solid red;
+}
+
+option:checked{
+    background-color: #4caf50;
+    color: white;
+}
+
+/* make form element flex column when screen is small */
+
+@media screen and (max-width: 600px) {
+    .form-element {
+      flex-direction: column;
+    }
+  
+    input {
+      width: 90%;
+    }
+
+    select{
+        width: 90%;
+    }
+
+    input[type='date']{
+        width: 90%;
+    }
+  }

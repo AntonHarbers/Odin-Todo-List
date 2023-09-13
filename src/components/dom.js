@@ -9,6 +9,8 @@ class Dom {
         this.todoForm = document.getElementById("todo-form");
         this.todoProjects = document.getElementById("todo-projects");
         this.projectNameInput = document.getElementById("project-name-input");
+        this.projectSelect = document.getElementById("todo-projects");
+        this.prioritySelect = document.getElementById("todo-priority");
     }
 
     renderTodos(projects) {
@@ -40,6 +42,13 @@ class Dom {
         this.projectModal.classList.add("hidden");
     }
 
+    closeModals(){
+        this.todoForm.reset();
+        this.projectForm.reset();
+        this.projectModal.classList.add("hidden");
+        this.todoModal.classList.add("hidden");
+    }
+
     addProjectsToSelect(projects) {
         // clear all options
         this.todoProjects.innerHTML = "";
@@ -49,7 +58,9 @@ class Dom {
             option.innerText = project.name;
             this.todoProjects.appendChild(option);
         });
-    }        
+    }      
+    
+    
 }
 
 export default Dom;

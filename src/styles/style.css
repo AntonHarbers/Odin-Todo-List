@@ -3,10 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    user-select: none;
 }
 
 .hidden{
     display: none;
+    animation: fadeOut 0.5s ease-in-out;
 }
 
 body{
@@ -24,3 +26,20 @@ body{
     height: 100vh;
 }
 
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
