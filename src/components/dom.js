@@ -1,3 +1,6 @@
+import formatDistance from 'date-fns/formatDistance'
+
+
 class Dom {
     constructor() {
         this.projectContainer = document.getElementById("projects");
@@ -11,6 +14,9 @@ class Dom {
         this.projectNameInput = document.getElementById("project-name-input");
         this.projectSelect = document.getElementById("todo-projects");
         this.prioritySelect = document.getElementById("todo-priority");
+        this.todoNameInput = document.getElementById("todo-name");
+        this.todoDescInput = document.getElementById("todo-desc");
+        this.todoDueDateInput = document.getElementById("todo-date");
     }
 
     renderTodos(projects) {
@@ -18,8 +24,10 @@ class Dom {
     }
 
     renderProjects(projects){
-        console.log("rendering projects");
+        // clear all projects before rerender
         this.projectContainer.innerHTML = "";
+
+        // add the projects to the project container
         projects.forEach((project) => {
             const projectDiv = document.createElement("div");
             projectDiv.classList.add("project");
@@ -27,6 +35,37 @@ class Dom {
                 <h3>${project.name}</h3>
             `;
             this.projectContainer.appendChild(projectDiv);
+
+            // sort todos by due date, soonest first
+
+            project.todos.sort((a, b) => {
+                return new Date(a.dueDate) - new Date(b.dueDate);
+            });
+
+
+            // add the todos in every project to the project div
+            project.todos.forEach((todo) => {
+                const todoDiv = document.createElement("div");
+                todoDiv.classList.add("todo");
+                todoDiv.innerHTML = `
+                    <h4>${todo.title}</h4>
+                    <p>${formatDistance(new Date(todo.dueDate),Date.now(), {addSuffix: true})}</p>
+                `;
+
+                // change the color of the todo based on the priority
+                if (todo.priority === "high") {
+                    todoDiv.style.backgroundColor = "#ff9980";
+                }else if(todo.priority === "urgent"){
+                    todoDiv.style.backgroundColor = "#ff471a";
+                } else if (todo.priority === "medium") {
+                    todoDiv.style.backgroundColor = "#ffc266";
+                } else {
+                    todoDiv.style.backgroundColor = "#85e085";
+                }
+
+                projectDiv.appendChild(todoDiv);
+            });
+
         });
     }
 
@@ -59,8 +98,6 @@ class Dom {
             this.todoProjects.appendChild(option);
         });
     }      
-    
-    
 }
 
 export default Dom;

@@ -106,6 +106,10 @@ input[type='submit']:active {
   background-color: #27dd2d;
 }
 
+input[type='date'].error{
+  color: red;
+}
+
 .error {
   font-weight: bold;
   border: 1px solid red;

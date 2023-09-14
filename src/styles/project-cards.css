@@ -1,34 +1,26 @@
 #projects{
     height: calc(100vh - 95px);
     width: 100%;
-    /* make a 3 column grid that repeats */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 1rem;
     padding: 1rem;
-    /* center the items in the grid slots*/
-    justify-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     /* make the grid responsive on medium and small screen*/
-    @media (max-width: 1000px){
-        grid-template-columns: repeat(2, 1fr);
-    }
-    @media (max-width: 600px){
-        grid-template-columns: repeat(1, 1fr);
-    }
     overflow-y: scroll;
 }
 
 .project{
     display: flex;
-    min-height: 300px;
-    width: 100%;
+    height: auto;
+    width: 550px;
     border-radius: .5rem;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     padding: 1rem;
-    background-color: #e4e4e4; ;
+    background-color: #e4e4e4; 
 }
 
 .project>h3{

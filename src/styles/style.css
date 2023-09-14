@@ -1,3 +1,9 @@
+@import url('buttons.css');
+@import url('modals.css');
+@import url('project-cards.css');
+@import url('todos.css');
+
+
 *{
     margin: 0;
     padding: 0;
