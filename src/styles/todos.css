@@ -1,59 +1,60 @@
-.todo{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 1rem;
-    background-color: #f2f2f2;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+.todo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.todo h4{
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0.5rem;
-    text-align: center;
+.todo h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem;
+  text-align: center;
 }
 
-.todo p{
-    font-size: 1.2rem;
-    margin: 0.5rem;
-    text-align: center;
+.todo p {
+  font-size: 1.2rem;
+  margin: 0.5rem;
+  text-align: center;
 }
 
-.delete-todo-btn{
-    background-color: #ff574bd0;
-    color: white;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    width: auto;
-    margin: 0.5rem;
+.delete-todo-btn {
+  background-color: #ff574bd0;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  width: auto;
+  margin: 0.5rem;
 }
 
-.delete-todo-btn:hover{
-    background-color: #ff574b;
+.delete-todo-btn:hover {
+  background-color: #ff574b;
 }
 
-.edit-todo-btn{
-    background-color: #3fa0c7;
-    color: white;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    width: auto;
-    margin: 0.5rem;}
+.edit-todo-btn {
+  background-color: #3fa0c7;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  width: auto;
+  margin: 0.5rem;
+}
 
-.edit-todo-btn:hover{
-    background-color: #4fbde9;
+.edit-todo-btn:hover {
+  background-color: #4fbde9;
 }

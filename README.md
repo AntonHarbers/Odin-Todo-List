@@ -10,8 +10,6 @@ To-Dos:
 
     make css dynamic
 
-    drag and drop?
-
 
 
     
