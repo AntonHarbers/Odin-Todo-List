@@ -1,6 +1,5 @@
 import formatDistance from 'date-fns/formatDistance'
 
-
 class Dom {
     constructor() {
         this.projectContainer = document.getElementById("projects");
@@ -44,13 +43,34 @@ class Dom {
 
 
             // add the todos in every project to the project div
-            project.todos.forEach((todo) => {
+            project.todos.forEach((todo, index) => {
                 const todoDiv = document.createElement("div");
+                // a delete button for every todo
+                const deleteBtn = document.createElement("button");
+                deleteBtn.classList.add("delete-todo-btn");
+                deleteBtn.innerText = "Delete";
+                deleteBtn.addEventListener("click", () => {
+                    // remove the todo from the project
+                    project.todos.splice(index, 1);
+                    // save the projects to local storage
+                    localStorage.setItem("projects", JSON.stringify(projects));
+                    
+                    this.renderTodos(projects);
+                });
+                // an edit button for every todo
+                const editBtn = document.createElement("button");
+                editBtn.classList.add("edit-todo-btn");
+                editBtn.innerText = "Edit";
+                
                 todoDiv.classList.add("todo");
                 todoDiv.innerHTML = `
                     <h4>${todo.title}</h4>
                     <p>${formatDistance(new Date(todo.dueDate),Date.now(), {addSuffix: true})}</p>
-                `;
+                    `;
+                
+                todoDiv.appendChild(editBtn);
+                todoDiv.appendChild(deleteBtn);
+
 
                 // change the color of the todo based on the priority
                 if (todo.priority === "high") {
@@ -65,6 +85,8 @@ class Dom {
 
                 projectDiv.appendChild(todoDiv);
             });
+
+
 
         });
     }
@@ -86,6 +108,7 @@ class Dom {
         this.projectForm.reset();
         this.projectModal.classList.add("hidden");
         this.todoModal.classList.add("hidden");
+        this.prioritySelect.style.backgroundColor = "#85e085";
     }
 
     addProjectsToSelect(projects) {

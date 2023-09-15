@@ -63,6 +63,7 @@ select {
   padding: 0.5rem;
   font-size: 1rem;
   text-align: center;
+  cursor: pointer;
 }
 
 #todo-priority{
@@ -106,8 +107,12 @@ input[type='submit']:active {
   background-color: #27dd2d;
 }
 
-input[type='date'].error{
+input[type='datetime-local'].error{
   color: red;
+}
+
+input[type='datetime-local']{
+  text-align: center;
 }
 
 .error {

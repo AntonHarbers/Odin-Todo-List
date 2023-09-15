@@ -1,4 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
+
+const supportedLocales = [
+  'en-US',
+  'en-GB',
+  'de',
+];
 
 module.exports = {
   entry: './src/index.js',
