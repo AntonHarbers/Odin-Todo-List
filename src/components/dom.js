@@ -52,7 +52,7 @@ class Dom {
                 deleteBtn.innerText = "Delete";
                 deleteBtn.addEventListener("click", () => {
                     // remove the todo from the project
-                    project.todos.splice(index, 1);
+                    project.removeTodo(index);
                     // save the projects to local storage
                     localStorage.setItem("projects", JSON.stringify(projects));
                     
@@ -65,12 +65,68 @@ class Dom {
 
                 editBtn.addEventListener("click", () => {
                     // open a modal to edit the todo
+                    this.toggleTodoModal();
+                    // fill the form with the todo information
+                    this.todoNameInput.value = todo.title;
+                    this.todoDescInput.value = todo.description;
+                    this.todoDueDateInput.value = todo.dueDate;
+                    this.prioritySelect.value = todo.priority;
+                    this.todoProjects.value = project.name;
+                    // change the color of the priority select based on the priority
+                    if (todo.priority === "high") {
+                        this.prioritySelect.style.backgroundColor = "#ff9980";
+                    } else if (todo.priority === "urgent") {
+                        this.prioritySelect.style.backgroundColor = "#ff471a";
+                    } else if (todo.priority === "medium") {
+                        this.prioritySelect.style.backgroundColor = "#ffc266";
+                    } else {
+                        this.prioritySelect.style.backgroundColor = "#85e085";
+                    }
+
+                    // hide the submit button and show the edit button
+                    this.todoForm.querySelector(".submit-btn").classList.add("hidden");
+                    this.todoForm.querySelector(".edit-btn").classList.remove("hidden");
+                    
+                    // add an event listener to the form to update the todo                    
+                    this.todoForm.addEventListener("submit", (e) => {
+                        e.preventDefault();
+                        // check if todo name is empty
+                        if (this.todoNameInput.value === "") {
+                            this.todoNameInput.classList.add("error");
+                            this.todoNameInput.placeholder = "Please enter a todo name";
+                            return;
+                        } else {
+                            this.todoNameInput.classList.remove("error");
+                            this.todoNameInput.placeholder = "Todo name";
+                        }
+
+                        // check if todo date is empty
+                        if (this.todoDueDateInput.value === "") {
+                            this.todoDueDateInput.classList.add("error");
+                            return;
+                        } else {
+                            this.todoDueDateInput.classList.remove("error");
+                        }
+
+                        // update the todo
+                        todo.updateTodo(
+                            this.todoNameInput.value,
+                            this.todoDescInput.value,
+                            this.todoDueDateInput.value,
+                            this.prioritySelect.value,
+                            this.todoProjects.value
+                        );
+                        // save the projects to local storage
+                        localStorage.setItem("projects", JSON.stringify(projects));
+                        // render the todos
+                        this.renderTodos(projects);
+                        // close the modal
+                        this.toggleTodoModal();
+                    });
                     // we need to give that model the todos information and the index of the todo in the correct project
-                    console.log(todo.updateTodo);
 
                 });
 
-                
                 todoDiv.classList.add("todo");
                 todoDiv.innerHTML = `
                     <h4>${todo.title}</h4>

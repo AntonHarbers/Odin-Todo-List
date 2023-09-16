@@ -13,17 +13,36 @@ content.hidden = false;
 
 const dom = new Dom();
 // get projects from local storage, otherwise create default project
-const projects = localStorage.getItem('projects')
+const loadedProjects = localStorage.getItem('projects')
   ? JSON.parse(localStorage.getItem('projects'))
   : [];
-if (projects.length === 0) {
-  const project = new Project('Default', []);
-  localStorage.setItem('projects', JSON.stringify(projects));
-  projects.push(project);
+if (loadedProjects.length === 0) {
+  const defaultProject = new Project('Default', []);
+  localStorage.setItem('projects', JSON.stringify(loadedProjects));
+  loadedProjects.push(defaultProject);
 }
 
-dom.addProjectsToSelect(projects);
-dom.renderTodos(projects);
+const reconstructedProjects = loadedProjects.map(projectData => {
+  const tempProject = new Project(); // Create a new instance of your Todo class
+  // Set properties of the todo based on todoData
+  tempProject.name = projectData.name;
+  tempProject.todos = projectData.todos.map(todoData => {
+    const tempTodo = new Todo(); // Create a new instance of your Todo class
+    // Set properties of the todo based on todoData
+    tempTodo.title = todoData.title;
+    tempTodo.description = todoData.description;
+    tempTodo.dueDate = todoData.dueDate;
+    tempTodo.priority = todoData.priority;
+    tempTodo.notes = todoData.notes;
+    return tempTodo;
+  });
+
+
+  return tempProject;
+});
+
+dom.addProjectsToSelect(reconstructedProjects);
+dom.renderTodos(reconstructedProjects);
 
 /**========================================================================
  *                           Event Listeners
@@ -51,7 +70,7 @@ dom.projectForm.addEventListener('submit', (e) => {
 
   // check if project name already exists
   if (
-    projects.some(
+    reconstructedProjects.some(
       (project) => project.name === dom.projectNameInput.value.trim()
     )
   ) {
@@ -65,12 +84,12 @@ dom.projectForm.addEventListener('submit', (e) => {
   dom.projectNameInput.placeholder = 'Project name';
 
   const project = new Project(dom.projectNameInput.value, []);
-  projects.push(project);
-  dom.addProjectsToSelect(projects);
+  reconstructedProjects.push(project);
+  dom.addProjectsToSelect(reconstructedProjects);
   dom.toggleProjectModal();
-  dom.renderProjects(projects);
+  dom.renderProjects(reconstructedProjects);
 
-  localStorage.setItem('projects', JSON.stringify(projects));
+  localStorage.setItem('projects', JSON.stringify(reconstructedProjects));
 });
 
 // validate todo name on input change
@@ -124,15 +143,15 @@ dom.todoForm.addEventListener('submit', (e) => {
     dom.projectSelect.value
   );
   // add the todo to the selected project
-  projects.forEach((project) => {
+  reconstructedProjects.forEach((project) => {
     if (project.name === dom.projectSelect.value) {
       project.todos.push(todo);
     }
   });
   // render the todos of the selected project
-  dom.renderTodos(projects);
+  dom.renderTodos(reconstructedProjects);
   // save the projects to local storage
-  localStorage.setItem('projects', JSON.stringify(projects));
+  localStorage.setItem('projects', JSON.stringify(reconstructedProjects));
   dom.toggleTodoModal();
 });
 
