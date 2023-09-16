@@ -1,4 +1,5 @@
 import formatDistance from 'date-fns/formatDistance'
+import Todo from "./todo";
 
 class Dom {
     constructor() {
@@ -61,6 +62,14 @@ class Dom {
                 const editBtn = document.createElement("button");
                 editBtn.classList.add("edit-todo-btn");
                 editBtn.innerText = "Edit";
+
+                editBtn.addEventListener("click", () => {
+                    // open a modal to edit the todo
+                    // we need to give that model the todos information and the index of the todo in the correct project
+                    console.log(todo.updateTodo);
+
+                });
+
                 
                 todoDiv.classList.add("todo");
                 todoDiv.innerHTML = `
