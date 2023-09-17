@@ -26,7 +26,7 @@
 }
 
 .delete-todo-btn{
-    background-color: #ff574bd0;
+    background-color: #740d05;
     color: white;
     padding: 0.5rem;
     border: none;
@@ -39,11 +39,11 @@
 }
 
 .delete-todo-btn:hover{
-    background-color: #ff574b;
+    background-color: var(--high-priority-color);
 }
 
 .edit-todo-btn{
-    background-color: #3fa0c7;
+    background-color: var(--edit-btn-color);
     color: white;
     padding: 0.5rem;
     border: none;
@@ -55,5 +55,5 @@
     margin: 0.5rem;}
 
 .edit-todo-btn:hover{
-    background-color: #4fbde9;
+    background-color: var(--background-color);
 }

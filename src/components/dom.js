@@ -1,5 +1,5 @@
 import formatDistance from "date-fns/formatDistance";
-import Todo from "./todo";
+import deleteProject from "../index.js"
 
 class Dom {
   constructor() {
@@ -17,6 +17,7 @@ class Dom {
     this.todoNameInput = document.getElementById("todo-name");
     this.todoDescInput = document.getElementById("todo-desc");
     this.todoDueDateInput = document.getElementById("todo-date");
+    this.todoSubmitBtn = document.getElementById("todo-submit-btn");
   }
 
   renderTodos(projects) {
@@ -27,17 +28,39 @@ class Dom {
     // clear all projects before rerender
     this.projectContainer.innerHTML = "";
 
+    projects.sort((a,b) => b.todos.length - a.todos.length)
+
     // add the projects to the project container
-    projects.forEach((project) => {
+    projects.forEach((project, projectIndex) => {
       const projectDiv = document.createElement("div");
       projectDiv.classList.add("project");
-      projectDiv.innerHTML = `
-                <h3>${project.name}</h3>
-            `;
+      const projectDivHeader = document.createElement("div");
+      projectDivHeader.classList.add("projectHeader")
+      const projectNameH3 = document.createElement("h3");
+      projectNameH3.textContent = project.name;
+      projectDivHeader.appendChild(projectNameH3);
+      projectDiv.appendChild(projectDivHeader);
+
+      projectDivHeader.style.width = "100%"
+      projectDivHeader.style.display = "flex";
+      projectDivHeader.style.justifyContent = "space-between";
+      projectDivHeader.style.alignItems = "center";
+
       this.projectContainer.appendChild(projectDiv);
+      // add remove button if project is not named default
+      if(project.name !== "Default"){
+        const deleteProjectBtn = document.createElement("Button");
+        deleteProjectBtn.classList.add("delete-project-btn");
+        deleteProjectBtn.style.backgroundImage = "url(./deleteIcon.png)";
+        projectDivHeader.appendChild(deleteProjectBtn)
+        deleteProjectBtn.addEventListener("click", () => {
+          console.log('works');
+          console.log(deleteProject)
+          deleteProject(projectIndex)
+        })
+      }
 
       // sort todos by due date, soonest first
-
       project.todos.sort((a, b) => {
         return new Date(a.dueDate) - new Date(b.dueDate);
       });
@@ -45,10 +68,15 @@ class Dom {
       // add the todos in every project to the project div
       project.todos.forEach((todo, index) => {
         const todoDiv = document.createElement("div");
+        const buttonContainer = document.createElement("div");
+        buttonContainer.style.display = "flex";
         // a delete button for every todo
         const deleteBtn = document.createElement("button");
         deleteBtn.classList.add("delete-todo-btn");
-        deleteBtn.innerText = "Delete";
+        deleteBtn.style.backgroundImage = "url(./deleteIcon.png)"
+        deleteBtn.style.height = "40px";
+        deleteBtn.style.width = "40px";
+        deleteBtn.style.backgroundSize = "40px 40px";
         deleteBtn.addEventListener("click", () => {
           // remove the todo from the project
           project.removeTodo(index);
@@ -60,10 +88,15 @@ class Dom {
         // an edit button for every todo
         const editBtn = document.createElement("button");
         editBtn.classList.add("edit-todo-btn");
-        editBtn.innerText = "Edit";
+        editBtn.style.backgroundImage = "url(./editIcon.png)";
+        editBtn.style.height = '40px'
+        editBtn.style.width = '40px'
+        editBtn.style.backgroundSize = "40px 40px"
 
         editBtn.addEventListener("click", () => {
           project.removeTodo(index);
+          console.log(this.todoSubmitBtn)
+          this.todoSubmitBtn.value = "Update Todo"
 
           // open a modal to edit the todo
           this.toggleTodoModal();
@@ -75,13 +108,13 @@ class Dom {
           this.todoProjects.value = project.name;
           // change the color of the priority select based on the priority
           if (todo.priority === "high") {
-            this.prioritySelect.style.backgroundColor = "#ff9980";
+            this.prioritySelect.style.backgroundColor = "#FF4365";
           } else if (todo.priority === "urgent") {
-            this.prioritySelect.style.backgroundColor = "#ff471a";
+            this.prioritySelect.style.backgroundColor = "#7C3238";
           } else if (todo.priority === "medium") {
-            this.prioritySelect.style.backgroundColor = "#ffc266";
+            this.prioritySelect.style.backgroundColor = "#E5B25D";
           } else {
-            this.prioritySelect.style.backgroundColor = "#85e085";
+            this.prioritySelect.style.backgroundColor = "#81F499";
           }
 
           // add an event listener to the form to update the todo
@@ -120,6 +153,7 @@ class Dom {
             // close the modal
             this.toggleTodoModal();
             this.todoForm.removeEventListener("submit", () => {});
+
           });
         });
 
@@ -131,18 +165,19 @@ class Dom {
                     })}</p>
                     `;
 
-        todoDiv.appendChild(editBtn);
-        todoDiv.appendChild(deleteBtn);
+        buttonContainer.appendChild(editBtn);
+        buttonContainer.appendChild(deleteBtn);
+        todoDiv.appendChild(buttonContainer);
 
         // change the color of the todo based on the priority
         if (todo.priority === "high") {
-          todoDiv.style.backgroundColor = "#ff9980";
+          todoDiv.style.backgroundColor = "#FF4365";
         } else if (todo.priority === "urgent") {
-          todoDiv.style.backgroundColor = "#ff471a";
+          todoDiv.style.backgroundColor = "#7C3238";
         } else if (todo.priority === "medium") {
-          todoDiv.style.backgroundColor = "#ffc266";
+          todoDiv.style.backgroundColor = "#E5B25D";
         } else {
-          todoDiv.style.backgroundColor = "#85e085";
+          todoDiv.style.backgroundColor = "#81F499";
         }
 
         projectDiv.appendChild(todoDiv);
@@ -160,6 +195,9 @@ class Dom {
     this.todoModal.classList.toggle("hidden");
     this.todoForm.reset();
     this.projectModal.classList.add("hidden");
+    this.todoNameInput.classList.remove("error");
+    this.prioritySelect.style.backgroundColor = "#81F499";
+
   }
 
   closeModals() {
@@ -167,7 +205,8 @@ class Dom {
     this.projectForm.reset();
     this.projectModal.classList.add("hidden");
     this.todoModal.classList.add("hidden");
-    this.prioritySelect.style.backgroundColor = "#85e085";
+    this.prioritySelect.style.backgroundColor = "#81F499";
+    this.todoSubmitBtn.value = "Create Todo"
   }
 
   addProjectsToSelect(projects) {
@@ -180,6 +219,7 @@ class Dom {
       this.todoProjects.appendChild(option);
     });
   }
+
 }
 
 export default Dom;

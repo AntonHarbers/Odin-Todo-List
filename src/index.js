@@ -115,7 +115,7 @@ dom.todoDueDateInput.addEventListener('input', (e) => {
 // add a new todo
 dom.todoForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
+  dom.todoSubmitBtn.value = "Create Todo"
   // check if todo name is empty
   if (dom.todoNameInput.value === '') {
     dom.todoNameInput.classList.add('error');
@@ -160,18 +160,17 @@ dom.prioritySelect.addEventListener('change', (e) => {
   var selectedValue = dom.prioritySelect.value;
   dom.prioritySelect.style.fontWeight = 'normal'; // Reset font weight
   if (selectedValue === 'low') {
-    dom.prioritySelect.style.backgroundColor = '#4CAF50'; // Green
+    dom.prioritySelect.style.backgroundColor = '#81F499'; // Green
   } else if (selectedValue === 'medium') {
-    dom.prioritySelect.style.backgroundColor = '#FFC107'; // Yellow
+    dom.prioritySelect.style.backgroundColor = '#E5B25D'; // Yellow
   } else if (selectedValue === 'high' || selectedValue === 'urgent') {
-    dom.prioritySelect.style.backgroundColor = '#FF5733'; // Red
+    dom.prioritySelect.style.backgroundColor = '#FF4365'; // Red
     if (selectedValue === 'urgent') {
       dom.prioritySelect.style.fontWeight = 'bold';
-    } else {
-      dom.prioritySelect.style.fontWeight = 'normal';
-    }
+      dom.prioritySelect.style.backgroundColor = '#7C3238'; // Red
+    } 
   } else {
-    dom.prioritySelect.style.backgroundColor = '#ffffff'; // White (reset)
+    dom.prioritySelect.style.backgroundColor = '#81F499'; // White (reset)
     dom.prioritySelect.style.fontWeight = 'normal'; // Reset font weight
   }
 });
@@ -182,3 +181,12 @@ window.addEventListener('keydown', (e) => {
     dom.closeModals();
   }
 });
+
+export default function deleteProject(index){
+  reconstructedProjects.splice(index, 1);
+  dom.renderTodos(reconstructedProjects);
+  localStorage.setItem('projects', JSON.stringify(reconstructedProjects));
+  dom.addProjectsToSelect(reconstructedProjects);
+  console.log("Works");
+}
+

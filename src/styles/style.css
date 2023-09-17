@@ -3,6 +3,20 @@
 @import url('project-cards.css');
 @import url('todos.css');
 
+:root{
+    --primary-color: #FFFFFF;
+    --secondary-color: #E5F4E3;
+    --background-color: #5DA9E9;
+    --secondary-background-color: #003F91;
+    --urgent-priority-color: #7C3238;
+    --high-priority-color: #FF4365;
+    --medium-priority-color: #E5B25D;
+    --low-priority-color: #81F499;
+    --edit-btn-color: #326273;
+    --delete-btn-color: #6D326D;
+    --submit-btn-color: #4FB477;
+}
+
 
 *{
     margin: 0;
@@ -18,7 +32,7 @@
 }
 
 body{
-    background-color: #c8c8c8;
+    background-color: var(--background-color);
 }
 
 .content{

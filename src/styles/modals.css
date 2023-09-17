@@ -5,14 +5,15 @@
   width: 50%;
   height: auto;
   padding: 2rem 0;
-  background-color: #e7e7e7;
+  background-color:var(--secondary-background-color);
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid white;
+  border: 3px solid var(--secondary-background-color);
   border-radius: 0.5rem;
   animation: fadeIn 0.5s ease-in-out;
+  color: var(--secondary-color);
 }
 
 form {
@@ -67,12 +68,12 @@ select {
 }
 
 #todo-priority{
-    background-color: #4CAF50;
+    background-color: var(--low-priority-color);
 
 }
 
 label {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
@@ -82,33 +83,36 @@ label:hover {
 
 select:focus {
   outline: none;
-  border: 1px solid blue;
+  border: 1px solid var(--edit-btn-color);
 }
 
 input[type='submit'] {
   border: none;
   border-radius: 0.5rem;
   font-size: 1.5rem;
-  background-color: #4caf50;
+  background-color: var(--submit-btn-color);
   color: white;
   cursor: pointer;
 }
 
 input[type='submit']:hover {
   background-color: #3e8e41;
+  transition: .2s linear;
 }
 
 input[type='submit']:focus {
   outline: none;
   background-color: #3e8e41;
+  transition: .2s linear;
 }
 
 input[type='submit']:active {
   background-color: #27dd2d;
+  transition: .2s linear;
 }
 
 input[type='datetime-local'].error{
-  color: red;
+  color: var(--high-priority-color);
 }
 
 input[type='datetime-local']{
@@ -117,11 +121,11 @@ input[type='datetime-local']{
 
 .error {
   font-weight: bold;
-  border: 1px solid red;
+  border: 3px solid var(--high-priority-color);
 }
 
 option:checked{
-    background-color: #4caf50;
+    background-color: var(--background-color);
     color: white;
 }
 
