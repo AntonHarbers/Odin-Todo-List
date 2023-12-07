@@ -1,22 +1,12 @@
-# Odin-Todo-List
-A todo list made for the odin project
+# The Odin Project: Todo List
 
-<<<<<<< HEAD
-To-Dos:
-    Change/Show todo info and rerender on change
+A Todo list Webapp made with HTML, CSS and JS for the Odin Project. Bundled using Webpack.
 
-    delete project - modal to decide if to delete all todos or to move them to default project
+[Live Link](https://antonharbers.github.io/Odin-Todo-List/)
 
-    add a nice color scheme
+Planned updates:
 
-    make css dynamic
+```
+Drag and Drop Functionality for Projects and Todos
 
-
-
-    
-=======
-Future updates:
-    Code refactoring
-    Styling update to let objects fit screen better
-    Drag and Drop
->>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
+```

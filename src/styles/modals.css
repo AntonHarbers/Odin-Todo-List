@@ -5,7 +5,7 @@
   width: 50%;
   height: auto;
   padding: 2rem 0;
-  background-color:var(--secondary-background-color);
+  background-color: var(--secondary-background-color);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -67,14 +67,8 @@ select {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 #todo-priority {
-  background-color: #4caf50;
-=======
-#todo-priority{
-    background-color: var(--low-priority-color);
-
->>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
+  background-color: var(--low-priority-color);
 }
 
 label {
@@ -102,27 +96,22 @@ input[type='submit'] {
 
 input[type='submit']:hover {
   background-color: #3e8e41;
-  transition: .2s linear;
+  transition: 0.2s linear;
 }
 
 input[type='submit']:focus {
   outline: none;
   background-color: #3e8e41;
-  transition: .2s linear;
+  transition: 0.2s linear;
 }
 
 input[type='submit']:active {
   background-color: #27dd2d;
-  transition: .2s linear;
+  transition: 0.2s linear;
 }
 
-<<<<<<< HEAD
 input[type='datetime-local'].error {
-  color: red;
-=======
-input[type='datetime-local'].error{
   color: var(--high-priority-color);
->>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
 }
 
 input[type='datetime-local'] {
@@ -134,20 +123,20 @@ input[type='datetime-local'] {
   border: 3px solid var(--high-priority-color);
 }
 
-<<<<<<< HEAD
 option:checked {
-  background-color: #4caf50;
+  background-color: var(--background-color);
   color: white;
-=======
-option:checked{
-    background-color: var(--background-color);
-    color: white;
->>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
 }
 
 /* make form element flex column when screen is small */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
+  .modal {
+    width: 90%;
+    height: auto;
+    top: 2%;
+    left: calc(50% - 45%);
+  }
   .form-element {
     flex-direction: column;
   }

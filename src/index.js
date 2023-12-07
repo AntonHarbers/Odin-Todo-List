@@ -2,6 +2,10 @@ import './styles/style.css';
 import Dom from './components/dom';
 import Project from './components/project';
 import Todo from './components/todo';
+import {
+  getProjectsFromLocalStorage,
+  updateProjectsInLocalStorage,
+} from './utils/helpers';
 
 // unhides content on load (prevents flash of unstyled content)
 const content = document.getElementById('content');
@@ -12,23 +16,20 @@ content.hidden = false;
  *========================================================================**/
 
 const dom = new Dom();
+
 // get projects from local storage, otherwise create default project
-const loadedProjects = localStorage.getItem('projects')
-  ? JSON.parse(localStorage.getItem('projects'))
-  : [];
+const loadedProjects = getProjectsFromLocalStorage();
 if (loadedProjects.length === 0) {
   const defaultProject = new Project('Default', []);
-  localStorage.setItem('projects', JSON.stringify(loadedProjects));
+  updateProjectsInLocalStorage(loadedProjects);
   loadedProjects.push(defaultProject);
 }
 
-const reconstructedProjects = loadedProjects.map(projectData => {
-  const tempProject = new Project(); // Create a new instance of your Todo class
-  // Set properties of the todo based on todoData
+const reconstructedProjects = loadedProjects.map((projectData) => {
+  const tempProject = new Project();
   tempProject.name = projectData.name;
-  tempProject.todos = projectData.todos.map(todoData => {
-    const tempTodo = new Todo(); // Create a new instance of your Todo class
-    // Set properties of the todo based on todoData
+  tempProject.todos = projectData.todos.map((todoData) => {
+    const tempTodo = new Todo();
     tempTodo.title = todoData.title;
     tempTodo.description = todoData.description;
     tempTodo.dueDate = todoData.dueDate;
@@ -36,7 +37,6 @@ const reconstructedProjects = loadedProjects.map(projectData => {
     tempTodo.notes = todoData.notes;
     return tempTodo;
   });
-
 
   return tempProject;
 });
@@ -48,12 +48,10 @@ dom.renderTodos(reconstructedProjects);
  *                           Event Listeners
  *========================================================================**/
 
-// open project modal
 dom.addProjectBtn.addEventListener('click', () => {
   dom.toggleProjectModal();
 });
 
-// open todo modal
 dom.addTodoBtn.addEventListener('click', () => {
   dom.toggleTodoModal();
 });
@@ -61,7 +59,6 @@ dom.addTodoBtn.addEventListener('click', () => {
 // add a new project
 dom.projectForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  // check if project name is empty
   if (dom.projectNameInput.value === '') {
     dom.projectNameInput.classList.add('error');
     dom.projectNameInput.placeholder = 'Please enter a project name';
@@ -89,7 +86,7 @@ dom.projectForm.addEventListener('submit', (e) => {
   dom.toggleProjectModal();
   dom.renderProjects(reconstructedProjects);
 
-  localStorage.setItem('projects', JSON.stringify(reconstructedProjects));
+  updateProjectsInLocalStorage(reconstructedProjects);
 });
 
 // validate todo name on input change
@@ -115,7 +112,7 @@ dom.todoDueDateInput.addEventListener('input', (e) => {
 // add a new todo
 dom.todoForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  dom.todoSubmitBtn.value = "Create Todo"
+  dom.todoSubmitBtn.value = 'Create Todo';
   // check if todo name is empty
   if (dom.todoNameInput.value === '') {
     dom.todoNameInput.classList.add('error');
@@ -148,10 +145,9 @@ dom.todoForm.addEventListener('submit', (e) => {
       project.todos.push(todo);
     }
   });
-  // render the todos of the selected project
+
   dom.renderTodos(reconstructedProjects);
-  // save the projects to local storage
-  localStorage.setItem('projects', JSON.stringify(reconstructedProjects));
+  updateProjectsInLocalStorage(reconstructedProjects);
   dom.toggleTodoModal();
 });
 
@@ -168,7 +164,7 @@ dom.prioritySelect.addEventListener('change', (e) => {
     if (selectedValue === 'urgent') {
       dom.prioritySelect.style.fontWeight = 'bold';
       dom.prioritySelect.style.backgroundColor = '#7C3238'; // Red
-    } 
+    }
   } else {
     dom.prioritySelect.style.backgroundColor = '#81F499'; // White (reset)
     dom.prioritySelect.style.fontWeight = 'normal'; // Reset font weight
@@ -182,11 +178,10 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-export default function deleteProject(index){
+export default function deleteProject(index) {
   reconstructedProjects.splice(index, 1);
   dom.renderTodos(reconstructedProjects);
-  localStorage.setItem('projects', JSON.stringify(reconstructedProjects));
+  updateProjectsInLocalStorage(reconstructedProjects);
   dom.addProjectsToSelect(reconstructedProjects);
-  console.log("Works");
+  console.log('Works');
 }
-

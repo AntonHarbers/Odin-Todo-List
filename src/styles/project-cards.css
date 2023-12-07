@@ -1,5 +1,5 @@
 #projects {
-  height: calc(100vh - 95px);
+  height: 100lvh;
   width: 100%;
   display: flex;
   gap: 1rem;
@@ -9,9 +9,10 @@
   align-items: center;
   /* make the grid responsive on medium and small screen*/
   overflow-y: scroll;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-<<<<<<< HEAD
 .project {
   display: flex;
   height: auto;
@@ -21,41 +22,25 @@
   justify-content: start;
   align-items: center;
   padding: 1rem;
-  background-color: #e4e4e4;
+  background-color: var(--secondary-background-color);
 }
 
-.project > h3 {
-  font-size: 2rem;
+.projectHeader > h3 {
+  font-size: 2.5rem;
+  text-shadow: 0 0 5px black;
+  font-weight: 500;
   margin: 0;
   padding: 0;
-=======
-.project{
-    display: flex;
-    height: auto;
-    width: 550px;
-    border-radius: .5rem;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--secondary-background-color); 
+  color: var(--secondary-color);
 }
 
-.projectHeader>h3{
-    font-size: 2rem;
-    margin: 0;
-    padding: 0;
-    color: var(--secondary-color);
+.delete-project-btn {
+  height: 50px;
+  width: 50px;
+  background-size: 50px 50px;
+  background-color: transparent;
 }
 
-.delete-project-btn{
-    height: 50px;
-    width: 50px;
-    background-size: 50px 50px;
-    background-color: transparent;
-}
-
-.delete-project-btn:hover{
-    background-color: rgba(255, 57, 57, 0.884);
->>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
+.delete-project-btn:hover {
+  background-color: rgba(255, 57, 57, 0.884);
 }
