@@ -11,6 +11,7 @@
   overflow-y: scroll;
 }
 
+<<<<<<< HEAD
 .project {
   display: flex;
   height: auto;
@@ -27,4 +28,34 @@
   font-size: 2rem;
   margin: 0;
   padding: 0;
+=======
+.project{
+    display: flex;
+    height: auto;
+    width: 550px;
+    border-radius: .5rem;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--secondary-background-color); 
+}
+
+.projectHeader>h3{
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    color: var(--secondary-color);
+}
+
+.delete-project-btn{
+    height: 50px;
+    width: 50px;
+    background-size: 50px 50px;
+    background-color: transparent;
+}
+
+.delete-project-btn:hover{
+    background-color: rgba(255, 57, 57, 0.884);
+>>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
 }

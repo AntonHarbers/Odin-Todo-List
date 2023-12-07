@@ -3,12 +3,36 @@
 @import url('project-cards.css');
 @import url('todos.css');
 
+<<<<<<< HEAD
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   user-select: none;
+=======
+:root{
+    --primary-color: #FFFFFF;
+    --secondary-color: #E5F4E3;
+    --background-color: #5DA9E9;
+    --secondary-background-color: #003F91;
+    --urgent-priority-color: #7C3238;
+    --high-priority-color: #FF4365;
+    --medium-priority-color: #E5B25D;
+    --low-priority-color: #81F499;
+    --edit-btn-color: #326273;
+    --delete-btn-color: #6D326D;
+    --submit-btn-color: #4FB477;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
+>>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
 }
 
 .hidden {
@@ -16,8 +40,13 @@
   animation: fadeOut 0.5s ease-in-out;
 }
 
+<<<<<<< HEAD
 body {
   background-color: #c8c8c8;
+=======
+body{
+    background-color: var(--background-color);
+>>>>>>> 94c324759f049fd2de74ef79c74d54a6a986f4d7
 }
 
 .content {

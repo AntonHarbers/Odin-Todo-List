@@ -31,5 +31,5 @@ module.exports = {
       new RegExp(`\\.[/\\\\](${supportedLocales.join('|')})[/\\\\]index\\.js$`)
     ),
   ],
-  mode: 'development',
+  mode: 'production',
 };
