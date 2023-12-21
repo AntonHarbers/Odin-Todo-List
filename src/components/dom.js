@@ -1,6 +1,16 @@
 import formatDistance from 'date-fns/formatDistance';
 import deleteProject from '../index.js';
-import { updateProjectsInLocalStorage } from '../utils/helpers.js';
+import {
+  updateProjectsInLocalStorage,
+  CreateEditBtn,
+  CreateProjectDivHeader,
+  CreateProjectDiv,
+  CreateProjectNameH3,
+  CreateDeleteProjectBtn,
+  CreateDeleteTodoBtn,
+  CreateTodoDiv,
+  UpdateTodoColor,
+} from '../utils/helpers.js';
 
 class Dom {
   constructor() {
@@ -33,30 +43,17 @@ class Dom {
 
     // add the projects to the project container
     projects.forEach((project, projectIndex) => {
-      const projectDiv = document.createElement('div');
-      projectDiv.classList.add('project');
-      const projectDivHeader = document.createElement('div');
-      projectDivHeader.classList.add('projectHeader');
-      const projectNameH3 = document.createElement('h3');
-      projectNameH3.textContent = project.name;
-      projectDivHeader.appendChild(projectNameH3);
+      const projectDiv = CreateProjectDiv();
+      const projectDivHeader = CreateProjectDivHeader();
+      projectDivHeader.appendChild(CreateProjectNameH3(project.name));
       projectDiv.appendChild(projectDivHeader);
-
-      projectDivHeader.style.width = '100%';
-      projectDivHeader.style.display = 'flex';
-      projectDivHeader.style.justifyContent = 'space-between';
-      projectDivHeader.style.alignItems = 'center';
 
       this.projectContainer.appendChild(projectDiv);
       // add remove button if project is not named default
       if (project.name !== 'Default') {
-        const deleteProjectBtn = document.createElement('Button');
-        deleteProjectBtn.classList.add('delete-project-btn');
-        deleteProjectBtn.style.backgroundImage = 'url(./deleteIcon.png)';
+        const deleteProjectBtn = CreateDeleteProjectBtn();
         projectDivHeader.appendChild(deleteProjectBtn);
         deleteProjectBtn.addEventListener('click', () => {
-          console.log('works');
-          console.log(deleteProject);
           deleteProject(projectIndex);
         });
       }
@@ -68,45 +65,29 @@ class Dom {
 
       // add the todos in every project to the project div
       project.todos.forEach((todo, index) => {
-        const todoDiv = document.createElement('div');
         const buttonContainer = document.createElement('div');
         buttonContainer.style.display = 'flex';
-        // a delete button for every todo
-        const deleteBtn = document.createElement('button');
-        deleteBtn.classList.add('delete-todo-btn');
-        deleteBtn.style.backgroundImage = 'url(./deleteIcon.png)';
-        deleteBtn.style.height = '40px';
-        deleteBtn.style.width = '40px';
-        deleteBtn.style.backgroundSize = '40px 40px';
+        const deleteBtn = CreateDeleteTodoBtn();
         deleteBtn.addEventListener('click', () => {
-          // remove the todo from the project
           project.removeTodo(index);
-          // save the projects to local storage
           updateProjectsInLocalStorage(projects);
-
           this.renderTodos(projects);
         });
+
         // an edit button for every todo
-        const editBtn = document.createElement('button');
-        editBtn.classList.add('edit-todo-btn');
-        editBtn.style.backgroundImage = 'url(./editIcon.png)';
-        editBtn.style.height = '40px';
-        editBtn.style.width = '40px';
-        editBtn.style.backgroundSize = '40px 40px';
+        const editBtn = CreateEditBtn();
 
         editBtn.addEventListener('click', () => {
           project.removeTodo(index);
-          console.log(this.todoSubmitBtn);
           this.todoSubmitBtn.value = 'Update Todo';
-
-          // open a modal to edit the todo
           this.toggleTodoModal();
-          // fill the form with the todo information
+
           this.todoNameInput.value = todo.title;
           this.todoDescInput.value = todo.description;
           this.todoDueDateInput.value = todo.dueDate;
           this.prioritySelect.value = todo.priority;
           this.todoProjects.value = project.name;
+
           // change the color of the priority select based on the priority
           if (todo.priority === 'high') {
             this.prioritySelect.style.backgroundColor = '#FF4365';
@@ -121,7 +102,6 @@ class Dom {
           // add an event listener to the form to update the todo
           this.todoForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // check if todo name is empty
             if (this.todoNameInput.value === '') {
               this.todoNameInput.classList.add('error');
               this.todoNameInput.placeholder = 'Please enter a todo name';
@@ -131,7 +111,6 @@ class Dom {
               this.todoNameInput.placeholder = 'Todo name';
             }
 
-            // check if todo date is empty
             if (this.todoDueDateInput.value === '') {
               this.todoDueDateInput.classList.add('error');
               return;
@@ -139,7 +118,6 @@ class Dom {
               this.todoDueDateInput.classList.remove('error');
             }
 
-            // update the todo
             todo.updateTodo(
               this.todoNameInput.value,
               this.todoDescInput.value,
@@ -147,39 +125,19 @@ class Dom {
               this.prioritySelect.value,
               this.todoProjects.value
             );
-            // save the projects to local storage
             updateProjectsInLocalStorage(projects);
-            // render the todos
             this.renderTodos(projects);
-            // close the modal
             this.toggleTodoModal();
             this.todoForm.removeEventListener('submit', () => {});
           });
         });
 
-        todoDiv.classList.add('todo');
-        todoDiv.innerHTML = `
-                    <h4>${todo.title}</h4>
-                    <h3>${todo.description}</h3>
-                    <p>${formatDistance(new Date(todo.dueDate), Date.now(), {
-                      addSuffix: true,
-                    })}</p>
-                    `;
-
         buttonContainer.appendChild(editBtn);
         buttonContainer.appendChild(deleteBtn);
-        todoDiv.appendChild(buttonContainer);
 
-        // change the color of the todo based on the priority
-        if (todo.priority === 'high') {
-          todoDiv.style.backgroundColor = '#FF4365';
-        } else if (todo.priority === 'urgent') {
-          todoDiv.style.backgroundColor = '#7C3238';
-        } else if (todo.priority === 'medium') {
-          todoDiv.style.backgroundColor = '#E5B25D';
-        } else {
-          todoDiv.style.backgroundColor = '#81F499';
-        }
+        const todoDiv = CreateTodoDiv(todo);
+        todoDiv.appendChild(buttonContainer);
+        UpdateTodoColor(todoDiv, todo.priority);
 
         projectDiv.appendChild(todoDiv);
       });

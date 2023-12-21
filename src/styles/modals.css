@@ -1,21 +1,3 @@
-.modal {
-  position: absolute;
-  top: calc(40% - 25%);
-  left: calc(50% - 25%);
-  width: 50%;
-  height: auto;
-  padding: 2rem 0;
-  background-color: var(--secondary-background-color);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid var(--secondary-background-color);
-  border-radius: 0.5rem;
-  animation: fadeIn 0.5s ease-in-out;
-  color: var(--secondary-color);
-}
-
 form {
   width: 80%;
   display: flex;
@@ -25,13 +7,6 @@ form {
   gap: 2rem;
 }
 
-.form-element {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
 input {
   width: 60%;
   height: 3rem;
@@ -39,6 +14,8 @@ input {
   border-radius: 0.5rem;
   padding: 0.5rem;
   font-size: 1.2rem;
+  transition: 0.2s linear;
+  cursor: pointer;
 }
 
 input:focus {
@@ -65,23 +42,16 @@ select {
   font-size: 1rem;
   text-align: center;
   cursor: pointer;
-}
-
-#todo-priority {
-  background-color: var(--low-priority-color);
+  outline: none;
 }
 
 label {
   font-size: 1.3rem;
   font-weight: bold;
-}
-
-label:hover {
   cursor: pointer;
 }
 
 select:focus {
-  outline: none;
   border: 1px solid var(--edit-btn-color);
 }
 
@@ -91,23 +61,16 @@ input[type='submit'] {
   font-size: 1.5rem;
   background-color: var(--submit-btn-color);
   color: white;
-  cursor: pointer;
 }
 
+input[type='submit']:focus,
 input[type='submit']:hover {
-  background-color: #3e8e41;
-  transition: 0.2s linear;
-}
-
-input[type='submit']:focus {
   outline: none;
   background-color: #3e8e41;
-  transition: 0.2s linear;
 }
 
 input[type='submit']:active {
   background-color: #27dd2d;
-  transition: 0.2s linear;
 }
 
 input[type='datetime-local'].error {
@@ -118,38 +81,60 @@ input[type='datetime-local'] {
   text-align: center;
 }
 
-.error {
-  font-weight: bold;
-  border: 3px solid var(--high-priority-color);
-}
-
 option:checked {
   background-color: var(--background-color);
   color: white;
 }
 
-/* make form element flex column when screen is small */
+.modal {
+  position: absolute;
+  top: calc(40% - 25%);
+  left: calc(50% - 25%);
+  width: 50%;
+  height: auto;
+  padding: 2rem 0;
+  background-color: var(--secondary-background-color);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--secondary-background-color);
+  border-radius: 0.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+  color: var(--secondary-color);
+}
+
+.form-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.error {
+  font-weight: bold;
+  border: 3px solid var(--high-priority-color);
+}
+
+#todo-priority {
+  background-color: var(--low-priority-color);
+}
 
 @media screen and (max-width: 1000px) {
   .modal {
-    width: 90%;
     height: auto;
     top: 2%;
     left: calc(50% - 45%);
   }
+
   .form-element {
     flex-direction: column;
   }
 
-  input {
-    width: 90%;
-  }
-
-  select {
-    width: 90%;
-  }
-
-  input[type='date'] {
+  input,
+  select,
+  input[type='date'],
+  .modal {
     width: 90%;
   }
 }

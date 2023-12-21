@@ -17,7 +17,8 @@
   box-shadow: 0 0px 15px 0 rgb(255, 255, 255);
 }
 
-.todo h4 {
+.todo h4,
+.todo p {
   font-size: 1.7rem;
   font-weight: bold;
   margin: 0.5rem;
@@ -26,10 +27,9 @@
 
 .todo p {
   font-size: 1.2rem;
-  margin: 0.5rem;
-  text-align: center;
 }
 
+.edit-todo-btn,
 .delete-todo-btn {
   color: white;
   padding: 0.5rem;
@@ -43,31 +43,12 @@
   transition: all 0.05s ease-in-out;
 }
 
-.delete-todo-btn:hover {
+.delete-todo-btn:hover,
+.edit-todo-btn:hover {
   transform: scale(1.2);
 }
 
-.delete-todo-btn:active {
-  transform: scale(0.9);
-}
-
-.edit-todo-btn {
-  color: white;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  width: auto;
-  margin: 0.5rem;
-  transition: all 0.05s ease-in-out;
-}
-
-.edit-todo-btn:hover {
-  transform: scale(1.3);
-}
-
+.delete-todo-btn:active,
 .edit-todo-btn:active {
   transform: scale(0.9);
 }

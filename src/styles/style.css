@@ -2,6 +2,7 @@
 @import url('modals.css');
 @import url('project-cards.css');
 @import url('todos.css');
+@import url('scrollbar.css');
 
 :root {
   --primary-color: #ffffff;
@@ -25,11 +26,6 @@
   user-select: none;
 }
 
-.hidden {
-  display: none;
-  animation: fadeOut 0.5s ease-in-out;
-}
-
 body {
   background: linear-gradient(
     -150deg,
@@ -49,24 +45,9 @@ body {
   height: 100vh;
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: white;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--delete-btn-color);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--delete-btn-color);
+.hidden {
+  display: none;
+  animation: fadeOut 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {

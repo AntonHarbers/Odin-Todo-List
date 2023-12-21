@@ -4,9 +4,10 @@ A Todo list Webapp made with HTML, CSS and JS for the Odin Project. Bundled usin
 
 [Live Link](https://antonharbers.github.io/Odin-Todo-List/)
 
-Planned updates:
+![Alt text](/src/images/repoImage.png)
 
-```
-Drag and Drop Functionality for Projects and Todos
+## Folder Structure
 
-```
+## Key Concepts
+
+## Final Notes
