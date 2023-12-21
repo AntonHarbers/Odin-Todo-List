@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Todo-List</title>
     <script defer src="main.js"></script>
+    <!-- FAVICON -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,7 +38,6 @@
         <div id="todo-modal" class="hidden modal">
           <form id="todo-form" action="submit">
             <label for="todo-name">New Todo</label>
-
             <div class="form-element">
               <label for="todo-name">Name</label>
               <input
@@ -46,7 +47,6 @@
                 placeholder="Enter todo name..."
               />
             </div>
-
             <div class="form-element">
               <label for="todo-desc">Description</label>
               <input
@@ -56,12 +56,10 @@
                 placeholder="Enter todo description..."
               />
             </div>
-
             <div class="form-element">
               <label for="todo-date">Due Date</label>
               <input type="datetime-local" name="todo-date" id="todo-date" />
             </div>
-
             <div class="form-element">
               <label for="todo-priority">Priority</label>
               <select name="todo-priority" id="todo-priority">
@@ -71,12 +69,10 @@
                 <option value="urgent">Urgent</option>
               </select>
             </div>
-
             <div class="form-element">
               <label for="todo-projects">Project</label>
               <select name="todo-projects" id="todo-projects"></select>
             </div>
-
             <input type="submit" value="Submit" id="todo-submit-btn" />
           </form>
         </div>
