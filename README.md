@@ -1,8 +1,8 @@
-# The Odin Project: Todo List
+# Todo-List Demo - The Odin Project
 
 A Todo list Webapp made with HTML, CSS and JS for the Odin Project. Bundled using Webpack.
 
-[Live Link](https://antonharbers.github.io/Odin-Todo-List/)
+[Live Link](https://antonharbers.github.io/Todo-List-Demo/)
 
 ![Repo Image](/src/images/repoImage.png)
 
